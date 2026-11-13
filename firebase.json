@@ -1,0 +1,43 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "storage": {
+      "port": 9199
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "taskflow-e1d2a",
+          "appId": "1:793254911566:android:703bb616f310bb21f92d1f",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "taskflow-e1d2a",
+          "configurations": {
+            "android": "1:793254911566:android:703bb616f310bb21f92d1f"
+          }
+        }
+      }
+    }
+  }
+}

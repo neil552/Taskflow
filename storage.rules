@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Los avatares son privados y se limitan al UID autenticado.
+    match /user_avatars/{avatarFile} {
+      allow read: if request.auth != null
+        && avatarFile == request.auth.uid + '.jpg';
+      allow create, update: if request.auth != null
+        && avatarFile == request.auth.uid + '.jpg'
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if request.auth != null
+        && avatarFile == request.auth.uid + '.jpg';
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
